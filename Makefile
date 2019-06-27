@@ -29,14 +29,27 @@ grpc-swagger:
 
 grpc: grpc-gen grpc-gateway grpc-swagger
 
-run:
+.PHONY: server
+server:
 	go build \
             -mod=vendor \
             -ldflags "-s -w \
             -X ${PROJECT}/version.Release=${RELEASE} \
             -X ${PROJECT}/version.Commit=${COMMIT} \
             -X ${PROJECT}/version.Build=${BUILD}" \
-            -o ./app \
-            .
-	./app
+            -o ./server-app \
+            ./server/server.go
+	./server-app
+
+.PHONY: client
+client:
+	go build \
+            -mod=vendor \
+            -ldflags "-s -w \
+            -X ${PROJECT}/version.Release=${RELEASE} \
+            -X ${PROJECT}/version.Commit=${COMMIT} \
+            -X ${PROJECT}/version.Build=${BUILD}" \
+            -o ./client-app \
+            ./client/client.go
+	./client-app
 
