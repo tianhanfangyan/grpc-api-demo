@@ -1,11 +1,15 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "api-demo.proto",
-    "version": "version not set"
+    "title": "grpc-api-demo",
+    "version": "1.0",
+    "contact": {
+      "name": "tianhanfangyan",
+      "url": "https://github.com/tianhanfangyan/grpc-api-demo",
+      "email": "dystargate@gmail.com"
+    }
   },
   "schemes": [
-    "http",
     "https"
   ],
   "consumes": [
@@ -23,6 +27,12 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/apiStringMessage"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exists.",
+            "schema": {
+              "format": "string"
             }
           }
         },
@@ -47,6 +57,12 @@
             "description": "A successful response.",
             "schema": {
               "$ref": "#/definitions/apiStringMessage"
+            }
+          },
+          "404": {
+            "description": "Returned when the resource does not exists.",
+            "schema": {
+              "format": "string"
             }
           }
         },

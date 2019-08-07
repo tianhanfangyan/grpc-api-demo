@@ -3,6 +3,34 @@ syntax = "proto3";
 package api;
 
 import "google/api/annotations.proto";
+import "protoc-gen-swagger/options/annotations.proto";
+
+option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
+    info: {
+        title: "grpc-api-demo";
+        version: "1.0";
+        contact: {
+            name: "tianhanfangyan";
+            url: "https://github.com/tianhanfangyan/grpc-api-demo";
+            email: "dystargate@gmail.com";
+        };
+    };
+    schemes: HTTPS;
+    consumes: "application/json";
+    produces: "application/json";
+    responses: {
+        key: "404";
+        value: {
+            description: "Returned when the resource does not exists.";
+            schema: {
+                json_schema: {
+                    type: STRING;
+                };
+            };
+        };
+    };
+};
+
 
 message StringMessage {
   string value = 1;
